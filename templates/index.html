@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio Construção Civil</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script defer src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="logo">🛠️ RRC Pavimentação e Construção Civil</div>
+        <nav>
+            <a href="#portfolio">Portfólio</a>
+            <a href="#sobre">Sobre</a>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <h1>Transformando Projetos em Realidade</h1>
+        <p>Construção Civil | Reformas | Acabamentos</p>
+        <a href="#contato" class="btn-primary">Fale Comigo</a>
+    </section>
+
+    <!-- PORTFÓLIO -->
+    <section id="portfolio">
+        <h2>Trabalhos Realizados</h2>
+        <div class="carousel-container">
+            <button class="prev">&#10094;</button>
+            <div class="carousel">
+              {% for m in media %}
+                <div class="carousel-item">
+                  {% if m.type == 'image' %}
+                    <img src="{{ url_for('static', filename=m.file) }}" alt="{{ m.alt }}">
+                  {% elif m.type == 'video' %}
+                    <video controls>
+                      <source src="{{ url_for('static', filename=m.file) }}" type="video/mp4">
+                    </video>
+                  {% endif %}
+                </div>
+              {% endfor %}
+            </div>
+            <button class="next">&#10095;</button>
+          </div>                           
+    </section>
+
+    <!-- SOBRE -->
+    <section id="sobre">
+        <h2>Sobre Mim</h2>
+        <p>Sou Ryan Guiller, profissional com mais de 5 anos de experiência na construção civil, especializado em reformas residenciais, comerciais e obras de alto padrão. 
+        Trabalho com dedicação, compromisso e qualidade para transformar cada projeto em realidade, da base ao acabamento.</p>
+    </section>
+
+    <!-- CONTATO -->
+    <section id="contato">
+        <h2>Entre em Contato</h2>
+        <div class="contact-buttons">
+            <a href="https://wa.me/5527998077074" class="btn-whatsapp" target="_blank">WhatsApp</a>
+            <a href="https://instagram.com/seuperfil" class="btn-instagram" target="_blank">Instagram</a>
+
+        </div>
+    </section>
+
+    <!-- RODAPÉ -->
+    <footer>
+        <p>© 2025  RRC Pavimentação e Construção Civil - Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>
