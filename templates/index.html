@@ -3,36 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfólio Construção Civil</title>
+    <title>RRC Pavimentação e Construção Civil</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <script defer src="{{ url_for('static', filename='script.js') }}"></script>
+    <link rel="icon" href="{{ url_for('static', filename='imagens/img_central.jpg') }}">
 </head>
 <body>
 
-    <!-- HEADER -->
     <header>
-        <div class="logo">🛠️ RRC Pavimentação e Construção Civil</div>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='imagens/img_logo_transparente_branco.png') }}" alt="Logo RRC" class="logo-img">
+            RRC Pavimentação e Construção Civil
+        </div>
         <nav>
             <a href="#portfolio">Portfólio</a>
             <a href="#sobre">Sobre</a>
         </nav>
     </header>
 
-    <!-- HERO -->
     <section class="hero">
         <h1>Transformando Projetos em Realidade</h1>
         <p>Construção Civil | Reformas | Acabamentos</p>
         <a href="#contato" class="btn-primary">Fale Comigo</a>
     </section>
 
-    <!-- PORTFÓLIO -->
+    <!-- PORTFÓLIO (ADICIONADO - carrossel adaptado ao seu layout) -->
     <section id="portfolio">
-        <h2>Trabalhos Realizados</h2>
+        <h2>— Trabalhos Realizados —</h2>
         <div class="carousel-container">
-            <button class="prev">&#10094;</button>
-            <div class="carousel">
+            <button class="prev" aria-label="Anterior">&#10094;</button>
+
+            <div class="carousel" role="list">
               {% for m in media %}
-                <div class="carousel-item">
+                <div class="carousel-item" role="listitem">
                   {% if m.type == 'image' %}
                     <img src="{{ url_for('static', filename=m.file) }}" alt="{{ m.alt }}">
                   {% elif m.type == 'video' %}
@@ -43,28 +46,32 @@
                 </div>
               {% endfor %}
             </div>
-            <button class="next">&#10095;</button>
-          </div>                           
-    </section>
 
-    <!-- SOBRE -->
-    <section id="sobre">
-        <h2>Sobre Mim</h2>
-        <p>Sou Ryan Guiller, profissional com mais de 5 anos de experiência na construção civil, especializado em reformas residenciais, comerciais e obras de alto padrão. 
-        Trabalho com dedicação, compromisso e qualidade para transformar cada projeto em realidade, da base ao acabamento.</p>
-    </section>
-
-    <!-- CONTATO -->
-    <section id="contato">
-        <h2>Entre em Contato</h2>
-        <div class="contact-buttons">
-            <a href="https://wa.me/5527998077074" class="btn-whatsapp" target="_blank">WhatsApp</a>
-            <a href="https://instagram.com/seuperfil" class="btn-instagram" target="_blank">Instagram</a>
-
+            <button class="next" aria-label="Próximo">&#10095;</button>
         </div>
     </section>
 
-    <!-- RODAPÉ -->
+    <section id="sobre">
+        <h2>Sobre Mim:</h2>
+        <div class="sobre-container">
+            <div class="sobre-logo">
+                <img src="{{ url_for('static', filename='imagens/img_logo_transparente.png') }}" alt="Logo RRC">
+            </div>
+            <div class="sobre-texto">
+                <p>Sou Ryan Guiller, profissional com mais de 5 anos de experiência na construção civil, atuando em reformas residenciais, comerciais e obras de alto padrão. Ao longo da minha trajetória, desenvolvi um trabalho completo e minucioso em todas as etapas da obra — desde o planejamento até o acabamento final — sempre com comprometimento, responsabilidade e foco na qualidade do resultado. <br> <br> No segmento residencial, realizo desde demolições e reconstruções estruturais, passando por assentamento de pisos e revestimentos, instalação hidráulica e elétrica, até a pintura e acabamento decorativo, buscando sempre unir funcionalidade, conforto e estética para o cliente. <br> <br> Em reformas comerciais, atuo com foco em prazo, organização e eficiência, garantindo que o ambiente seja adaptado para atender às necessidades do negócio, seja uma loja, escritório ou espaço corporativo. Cuido de etapas como nivelamento de pisos, adequação de iluminação, divisórias, forros, fachadas e otimização do espaço interno, sempre respeitando normas técnicas e de segurança. <br> <br> Nas obras de alto padrão, o trabalho exige ainda mais precisão e atenção aos detalhes. Nesses projetos, executo serviços com materiais nobres e acabamentos finos, cuidando de cada detalhe do design arquitetônico, como instalação de porcelanatos grandes formatos, iluminação embutida, gesso decorativo e pintura personalizada. <br> <br> Meu compromisso é transformar cada projeto em realidade, entregando resultados que unem qualidade, estética e durabilidade, sempre buscando superar as expectativas do cliente e garantir a satisfação em cada obra realizada.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato">
+        <h2>— Entre em Contato —</h2>
+        <div class="contact-buttons">
+            <a href="https://wa.me/5527998077074" class="btn-whatsapp" target="_blank">WhatsApp</a>
+            <a href="https://instagram.com/" class="btn-instagram" target="_blank">Instagram</a>
+        </div>
+    </section>
+
     <footer>
         <p>© 2025  RRC Pavimentação e Construção Civil - Todos os direitos reservados.</p>
     </footer>
